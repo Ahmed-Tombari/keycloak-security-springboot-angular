@@ -1,0 +1,4 @@
+package com.tombari.orderservice.interceptors;
+
+public class FeignInterceptor {
+}

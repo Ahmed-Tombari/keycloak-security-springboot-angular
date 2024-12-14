@@ -1,0 +1,4 @@
+package com.tombari.orderservice.feign;
+
+public class CustomerRestClient {
+}
