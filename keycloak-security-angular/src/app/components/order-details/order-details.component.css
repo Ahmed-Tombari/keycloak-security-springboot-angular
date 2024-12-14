@@ -1,0 +1,13 @@
+.mat-header-row {
+    background-color: #f5f5f5;
+    font-weight: bold;
+  }
+  
+  .mat-cell {
+    padding: 8px;
+  }
+  
+  .mat-elevation-z8 {
+    margin-top: 16px;
+    border-radius: 8px;
+  }

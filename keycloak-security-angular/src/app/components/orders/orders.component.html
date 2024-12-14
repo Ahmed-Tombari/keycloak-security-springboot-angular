@@ -1,0 +1,53 @@
+<div class="p-3">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Orders</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <h2>Orders</h2>
+      <table mat-table [dataSource]="orders" class="mat-elevation-z8" *ngIf="orders">
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let order">{{ order.id }}</td>
+        </ng-container>
+
+        <!-- Date Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let order">{{ order.date | date : 'dd/MM/yyyy' }}</td>
+        </ng-container>
+
+        <!-- State Column -->
+        <ng-container matColumnDef="state">
+          <th mat-header-cell *matHeaderCellDef>State</th>
+          <td mat-cell *matCellDef="let order">{{ order.state }}</td>
+        </ng-container>
+
+        <!-- Products Count Column -->
+        <ng-container matColumnDef="productsCount">
+          <th mat-header-cell *matHeaderCellDef>Products Count</th>
+          <td mat-cell *matCellDef="let order">{{ order.productItems.length }}</td>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let order">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="getOrderDetails(order)"
+            >
+              Order Details
+            </button>
+          </td>
+        </ng-container>
+
+        <!-- Header and Row Definitions -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,25 @@
+.navbar .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .navbar .nav-link {
+    margin-right: 16px;
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .navbar {
+    background-color: #263238 !important;
+    color: white !important; /* Ensure text is visible */
+  }
+  
+  .mat-toolbar-row {
+    color: inherit; /* Inherit the color from the parent */
+  }
+  

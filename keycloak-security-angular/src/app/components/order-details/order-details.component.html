@@ -1,0 +1,52 @@
+<div class="p-3">
+  <mat-card *ngIf="orderDetails">
+    <mat-card-header>
+      <mat-card-title>Order Details: {{ orderId }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ul>
+        <li><strong>Date:</strong> {{ orderDetails.date | date : 'dd/MM/yyyy' }}</li>
+        <li><strong>State:</strong> {{ orderDetails.state }}</li>
+      </ul>
+
+      <table mat-table [dataSource]="orderDetails.productItems" class="mat-elevation-z8">
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef class="mat-header">ID</th>
+          <td mat-cell *matCellDef="let pi">{{ pi.id }}</td>
+        </ng-container>
+
+        <!-- Product Name Column -->
+        <ng-container matColumnDef="productName">
+          <th mat-header-cell *matHeaderCellDef class="mat-header">Product Name</th>
+          <td mat-cell *matCellDef="let pi">{{ pi.product.name }}</td>
+        </ng-container>
+
+        <!-- Price Column -->
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef class="mat-header">Price</th>
+          <td mat-cell *matCellDef="let pi">{{ pi.price | number :'0.2-2' }}</td>
+        </ng-container>
+
+        <!-- Quantity Column -->
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef class="mat-header">Quantity</th>
+          <td mat-cell *matCellDef="let pi">{{ pi.quantity }}</td>
+        </ng-container>
+
+        <!-- Amount Column -->
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef class="mat-header">Amount</th>
+          <td mat-cell *matCellDef="let pi">{{ pi.quantity * pi.price | number :'0.2-2' }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr>
+          <td colspan="4" class="mat-footer-cell"><strong>Total</strong></td>
+          <td class="mat-footer-cell">{{ getTotal(orderDetails) | number :'0.2-2' }}</td>
+        </tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

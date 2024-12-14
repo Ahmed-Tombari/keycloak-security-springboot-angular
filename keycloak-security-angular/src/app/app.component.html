@@ -1,0 +1,9 @@
+<div class="app-container" [ngClass]="{ 'sidenav-collapsed': isSideNavCollapsed }">
+    <app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
+    <div class="content">
+      <app-navbar></app-navbar>
+      <app-body [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth"></app-body>
+      <app-footer></app-footer>
+    </div>
+  </div>
+  
